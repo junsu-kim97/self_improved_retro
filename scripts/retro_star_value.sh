@@ -6,7 +6,11 @@ SHARD_TO=$5
 GPU_START=$6
 GPU_NUM=$7
 
+# shellcheck disable=SC2164
+cd retro_star
+
 if [ ! -d "./results/retro_star_value/x${ITER}/multi-step/succ_traj" ]; then
+  mkdir ./results
   mkdir ./results/retro_star_value
   mkdir ./results/retro_star_value/x${ITER}
   mkdir ./results/retro_star_value/x${ITER}/multi-step
@@ -23,8 +27,6 @@ if [ ! -d "./results/retro_star_value/x${ITER}/one-step" ]; then
   mkdir ./results/retro_star_value/x${ITER}/one-step
 fi
 
-# shellcheck disable=SC2164
-cd retro_star
 for ((shard=SHARD_FROM; shard<=SHARD_TO; shard+=1)); do
   python retro_plan.py \
   --test_routes ./dataset/train_routes_shards/shard_${shard}.pkl \

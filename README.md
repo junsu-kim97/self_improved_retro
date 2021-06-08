@@ -27,6 +27,9 @@ pip install -e .
 ### Download dataset
 Download dataset following [Retro*](https://github.com/binghong-ml/retro_star).
 
+Download 299202 target molecule dataset from [link](https://www.dropbox.com/s/0nezo0xith8bnml/routes_train.pkl?dl=0),
+and place the pkl file into ./retro_star/dataset/
+
 ### Download pre-trained model
 #### a) Reference backward reaction model
 For a reference backward reaction model, we use backward reaction model trained by authors of Retro* 
