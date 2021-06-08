@@ -6,6 +6,24 @@ SHARD_TO=$5
 GPU_START=$6
 GPU_NUM=$7
 
+if [ ! -d "./results/retro_star_zero/x${ITER}/multi-step/succ_traj" ]; then
+  mkdir ./results/retro_star_zero
+  mkdir ./results/retro_star_zero/x${ITER}
+  mkdir ./results/retro_star_zero/x${ITER}/multi-step
+  mkdir ./results/retro_star_zero/x${ITER}/multi-step/succ_traj
+fi
+
+for ((shard=SHARD_FROM; shard<=SHARD_TO; shard+=1)); do
+  if [ ! -d "./results/retro_star_zero/x${ITER}/multi-step/succ_traj/shard_${shard}" ]; then
+    mkdir ./results/retro_star_zero/x${ITER}/multi-step/succ_traj/shard_${shard}
+  fi
+done
+
+if [ ! -d "./results/retro_star_zero/x${ITER}/one-step" ]; then
+  mkdir ./results/retro_star_zero/x${ITER}/one-step
+fi
+
+
 # shellcheck disable=SC2164
 cd retro_star
 for ((shard=SHARD_FROM; shard<=SHARD_TO; shard+=1)); do

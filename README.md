@@ -1,5 +1,6 @@
 # Self-Improved Retrosynthetic Planning
 This is an official implementation of our paper Self-improved Retrosynthetic Planning (ICML 2021)
+This implemented on top of [Retro*](https://github.com/binghong-ml/retro_star).
 
 ## Setup
 
@@ -15,7 +16,6 @@ conda install graphviz
 conda install python-graphviz
 pip install tqdm
 ```
-Self-Improved Retrosynthetic Planning is implemented on top of [Retro*](https://github.com/binghong-ml/retro_star).
 
 ### Install Retro* lib
 ```bash
