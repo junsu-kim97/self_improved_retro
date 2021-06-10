@@ -46,6 +46,8 @@ Place the forward.ckpt file in ./retro_star/one_step_model/forward/.
 We provide checkpoint of bacward reaction model trainded by us in this [link](https://drive.google.com/drive/u/0/folders/13DdftEV0x55OZ8ZxHNAkmcvi_4x90hPI).
 See retro_star_zero_ours.ckpt and retro_star_value_ours.ckpt 
 
+### Self-Improved Retrosynthetic Planning
+Following scripts runs Retro*-0 + ours. If you want run Retro* + ours, add "--use_value_fn" option in retro_plan.py (at step 1 and 3)
 ## 1. Generate reaction pathways
 ```bash
 python retro_plan.py \
@@ -105,7 +107,8 @@ python preprocessing/split_big_dataset.py
 We offer a script which can conduct whole procedure of our framework at once.
 (We assume that you have access to 4 GPU. Otherwise, change the GPU_NUM option, i.e., GPU_NUM=1)
 
-To run iteration 1 for our framework with Retro*-0,
+### Retro*-0 + ours
+For iteration 1,
 ```bash
 ./scripts/retro_star_zero.sh \
     ${backward model_path} \
@@ -117,7 +120,7 @@ To run iteration 1 for our framework with Retro*-0,
 e.x)
 ./scripts/retro_star_zero.sh \
     one_step_model/saved_rollout_state_1_2048.ckpt \
-    ./retro_star/one_step_model/forward/saved_rollout_state_1_2048_2021-02-09_19:06:41.ckpt \
+    ./retro_star/one_step_model/forward/forward_model.ckpt \
     1 \
     0 11 \
     0 4
@@ -133,8 +136,8 @@ If you want iterate one more (iteration 2) with the updated backward model, run 
     0 4
 ```
 
-
-To run iteration 1 for our framework with Retro*,
+### Retro* + ours
+For iteration 1,
 ```bash
 ./scripts/retro_star_value.sh \
     ${backward model_path} \
